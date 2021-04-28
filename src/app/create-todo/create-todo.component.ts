@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+export interface Todo {
+  value: string;
+  id: number;
+}
+
 @Component({
   selector: 'app-create-todo',
   template: `
