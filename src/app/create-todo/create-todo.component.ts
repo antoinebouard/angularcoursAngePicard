@@ -1,14 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-app-input',
+  selector: 'app-create-todo',
   template: `
-    <input type="text" [(ngModel)]="text" (keyup)="newText.emit(text)" />
-    <p>{{ text }}</p>
-    `,
+  <input type="text" [(ngModel)]="text"/>
+  <button (click)="newText.emit(text)">Creer
+  </button>
+  `,
   styles: [``]
 })
-export class AppInputComponent implements OnInit {
+export class CreateTodoComponent implements OnInit {
+
 
   @Input() text: string;
   @Output() newText = new EventEmitter<string>();

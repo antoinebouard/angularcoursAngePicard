@@ -3,13 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <app-app-input  [text]="appText"
-      (newText)="appText = $event"></app-app-input>
-    <app-app-input [text]="appText"
-      (newText)="appText = $event"></app-app-input>
+    <app-create-todo
+      (newText)="tabText.push($event)"></app-create-todo>
+    <app-to-do-list [tabText]="tabText"></app-to-do-list>
+    <button (click)="tabText.splice(0, tabText.length)">Vider
+    </button>
     `,
   styles: [``]
 })
 export class AppComponent {
-  appText: string = "text";
+  tabText: string[] = ["Tache 1", "Tache 2 "];
+
+
 }
