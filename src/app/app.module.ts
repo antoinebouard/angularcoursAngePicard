@@ -4,21 +4,22 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { CreateTodoComponent } from './create-todo/create-todo.component';
-import { ToDoListComponent } from './to-do-list/to-do-list.component';
-import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
+import { HttpClientModule } from '@angular/common/http';
+import { GraphQLModule } from './graphql.module';
+import { Apollo, gql } from 'apollo-angular';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateTodoComponent,
-    ToDoListComponent,
-    TodoListItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    GraphQLModule,
+    Apollo,
+    gql,
   ],
   providers: [],
   bootstrap: [AppComponent]

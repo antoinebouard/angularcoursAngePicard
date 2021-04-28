@@ -1,28 +1,53 @@
 import { TmplAstBoundText } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Apollo, gql } from 'apollo-angular';
 
-export interface Todo {
-  value: string;
-  id: number;
-}
 
 @Component({
   selector: 'app-root',
   template: `
-    <app-create-todo
-      (newText)="add($event)"></app-create-todo>
-    <app-to-do-list [tabText]="tabText"></app-to-do-list>
-    <button (click)="tabText=[]">Vider
-    </button>
-    `,
+  <div *ngIf="loading">
+      Loading...
+    </div>
+    <div *ngIf="error">
+      Error :(
+    </div>
+  <div *ngIf="continents">
+    <ul>
+      <li *ngFor="let continent of continents">
+        <p>{{ continent.name }}</p>
+      </li>
+    </ul>
+  </div>`,
   styles: [``]
 })
-export class AppComponent {
-  tabText: Todo[] = [{id : Math.floor(Math.random() * 100000),value: "Tache 1"}, {id : Math.floor(Math.random() * 100000),value: "Tache 2"}];
+export class ExchangeRates implements OnInit {
+  continents: any[];
+  loading = true;
+  error: any;
 
-  add(value : string) {
-    this.tabText.push({id : Math.floor(Math.random() * 100000), value: value});
+  constructor(private apollo: Apollo) {}
+
+  ngOnInit() {
+    this.apollo
+      .watchQuery({
+        query: gql`
+        {
+          continents {
+            name
+          }
+        }
+        `,
+      })
+      .valueChanges.subscribe((result: any) => {
+        this.continents = result?.data?.continents;
+        this.loading = result.loading;
+        this.error = result.error;
+      });
   }
 }
+
+
 
 
