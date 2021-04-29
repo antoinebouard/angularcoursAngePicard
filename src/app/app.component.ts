@@ -11,7 +11,7 @@ export interface Todo {
   template: `
     <app-create-todo
       (newText)="add($event)"></app-create-todo>
-    <app-to-do-list [tabText]="tabText"></app-to-do-list>
+    <app-to-do-list [tabText]="tabText" (delete)="deleteTodo($event)"></app-to-do-list>
     <button (click)="tabText=[]">Vider
     </button>
     `,
@@ -22,6 +22,10 @@ export class AppComponent {
 
   add(value : string) {
     this.tabText.push({id : Math.floor(Math.random() * 100000), value: value});
+  }
+  
+  deleteTodo(todo : Todo) {
+    this.tabText.splice(this.tabText.indexOf(todo), 1)
   }
 }
 
