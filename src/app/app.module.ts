@@ -4,22 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { GraphQLModule } from './graphql.module';
-import { Apollo, gql } from 'apollo-angular';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TimerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    GraphQLModule,
-    Apollo,
-    gql,
   ],
   providers: [],
   bootstrap: [AppComponent]
