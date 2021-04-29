@@ -8,7 +8,7 @@ export interface Todo {
 @Component({
   selector: 'app-create-todo',
   template: `
-  <input type="text" [(ngModel)]="text"/>
+  <input type="text" [(ngModel)]="text" (keydown.enter)="newText.emit(text)"/>
   <button (click)="newText.emit(text)">Creer
   </button>
   `,
