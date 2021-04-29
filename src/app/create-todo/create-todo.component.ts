@@ -9,11 +9,18 @@ export interface Todo {
 @Component({
   selector: 'app-create-todo',
   template: `
-  <input type="text" [(ngModel)]="text" (keydown.enter)="this.create()"/>
-  <button (click)="this.create()">Creer
-  </button>
+    <input matInput type="text" class="input" [(ngModel)]="text" (keydown.enter)="this.create()"/>
+    <button class="button" mat-raised-button color="primary" (click)="this.create()">Creer</button>
   `,
-  styles: [``]
+  styles: [`
+    .input {
+      margin-top: 20px;
+      margin-left: 14px;
+    }
+    .button {
+      margin-left: 10px;
+    }
+  `]
 })
 export class CreateTodoComponent implements OnInit {
 

@@ -13,11 +13,15 @@ export interface Todo {
     <app-create-todo
       (newText)="this.todo.add($event)"></app-create-todo>
     <app-to-do-list [tabText]="tabText"></app-to-do-list>
-    <button (click)="this.todo.vider()">Vider
-    </button>
+    <button class="button" mat-raised-button color="primary" (click)="this.todo.vider()">Vider</button>
     `,
-  styles: [``]
+  styles: [`
+    .button {
+      margin-left: 10px;
+    }
+  `]
 })
+
 export class AppComponent {
 
   text: string

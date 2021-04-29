@@ -8,11 +8,11 @@ export interface Todo {
 @Component({
   selector: 'app-to-do-list',
   template: `
-  <ul>
-    <li *ngFor="let text of tabText">
+  <mat-list>
+    <mat-list-item *ngFor="let text of tabText">
       <app-todo-list-item [text]="text" [tabText]="tabText"></app-todo-list-item>
-    </li>
-  </ul>
+    </mat-list-item>
+  </mat-list>
   `,
   styles: [``]
 })
@@ -25,3 +25,9 @@ export class ToDoListComponent implements OnInit {
   }
 
 }
+
+// <mat-list>
+//  <mat-list-item> Pepper </mat-list-item>
+//  <mat-list-item> Salt </mat-list-item>
+//  <mat-list-item> Paprika </mat-list-item>
+// </mat-list>

@@ -9,9 +9,11 @@ export interface Todo {
 @Component({
   selector: 'app-todo-list-item',
   template: `
-  <p>ID : {{ text.id }} - {{ text.value }}</p><button (click)="this.todo.delete(text)">Supprimer</button>
+  <p>ID : {{ text.id }} - {{ text.value }}<button class="button" mat-raised-button color="primary" (click)="this.todo.delete(text)">Supprimer</button></p>
   `,
-  styles: [``]
+  styles: [`.button {
+    margin-left: 10px;
+  }`]
 })
 export class TodoListItemComponent implements OnInit {
 
