@@ -18,7 +18,7 @@ export class CreateTodoComponent implements OnInit {
 
 
   @Input() text: string;
-  @Output() newText = new EventEmitter<string>();
+  @Output() newText = new EventEmitter<Todo>();
   constructor() { }
 
   ngOnInit(): void {

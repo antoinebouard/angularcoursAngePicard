@@ -23,9 +23,9 @@ export class AppComponent {
   add(value : string) {
     this.tabText.push({id : Math.floor(Math.random() * 100000), value: value});
   }
-  
+
   deleteTodo(todo : Todo) {
-    this.tabText.splice(this.tabText.indexOf(todo), 1)
+    this.tabText.splice(this.tabText.indexOf(todo), 1);
   }
 }
 

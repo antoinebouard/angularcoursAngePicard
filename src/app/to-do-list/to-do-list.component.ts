@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 export interface Todo {
   value: string;
@@ -10,7 +10,7 @@ export interface Todo {
   template: `
   <ul>
     <li *ngFor="let text of tabText">
-      <app-todo-list-item [text]="text" [tabText]="tabText"></app-todo-list-item>
+      <app-todo-list-item [text]="text" [tabText]="tabText" (delete)="this.delete.emit(todo)"></app-todo-list-item>
     </li>
   </ul>
   `,
@@ -19,6 +19,7 @@ export interface Todo {
 export class ToDoListComponent implements OnInit {
 
   @Input() tabText: Todo[];
+  @Output() delete = new EventEmitter<Todo>();
   constructor() { }
 
   ngOnInit(): void {
