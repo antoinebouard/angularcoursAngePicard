@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TodoService } from '../todo.service';
 
 export interface Todo {
   value: string;
@@ -8,7 +9,7 @@ export interface Todo {
 @Component({
   selector: 'app-todo-list-item',
   template: `
-  <p>ID : {{ text.id }} - {{ text.value }}</p><button (click)="delete.emit()">Supprimer</button>
+  <p>ID : {{ text.id }} - {{ text.value }}</p><button (click)="this.todo.delete(text)">Supprimer</button>
   `,
   styles: [``]
 })
@@ -16,8 +17,8 @@ export class TodoListItemComponent implements OnInit {
 
   @Input() text: Todo;
   @Input() tabText: Todo[]
-  @Output() delete = new EventEmitter<string>();
-  constructor() { }
+  constructor (public todo : TodoService) {
+   }
 
   ngOnInit(): void {
     console.log(this.text);

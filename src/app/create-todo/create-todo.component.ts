@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TodoService } from '../todo.service';
 
 export interface Todo {
   value: string;
@@ -8,8 +9,8 @@ export interface Todo {
 @Component({
   selector: 'app-create-todo',
   template: `
-  <input type="text" [(ngModel)]="text" (keydown.enter)="newText.emit(text)"/>
-  <button (click)="newText.emit(text)">Creer
+  <input type="text" [(ngModel)]="text" (keydown.enter)="this.create()"/>
+  <button (click)="this.create()">Creer
   </button>
   `,
   styles: [``]
@@ -18,10 +19,14 @@ export class CreateTodoComponent implements OnInit {
 
 
   @Input() text: string;
-  @Output() newText = new EventEmitter<string>();
-  constructor() { }
+  constructor(public todo : TodoService) { }
 
   ngOnInit(): void {
+  }
+
+  public create() {
+    this.todo.add(this.text);
+    this.text= "";
   }
 
 }
